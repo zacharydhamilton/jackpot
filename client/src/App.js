@@ -81,7 +81,7 @@ export default function App() {
             }).then((res) => {
                 setTotal(`$${prettyNumbers(res.data.pot)}`);
             }).catch((error) => {
-                console.log(error);
+                console.warn(error);
             });
         }, 2500);
         return (() => {
