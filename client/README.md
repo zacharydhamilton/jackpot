@@ -1,6 +1,8 @@
 # Client
 
 ## Important methods
+
+### `App.js`
 ```js
 // This method is called when the wager button is clicked
 const handleButtonClick = () => {

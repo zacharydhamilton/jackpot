@@ -1,7 +1,8 @@
 # Server
 
-### Important methods
+## Important methods
 
+### `server.js`
 ```js
 // Accept wagers from the client and write them to Kafka
 app.post('/wager', (req, res) => {
