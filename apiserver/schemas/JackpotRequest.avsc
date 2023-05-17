@@ -1,0 +1,13 @@
+{
+    "type": "record",
+    "name": "JackpotRequest",
+    "namespace": "com.example.apiserver.objects",
+    "version": "1",
+    "fields": [
+        {
+            "name": "jackpotPoolId",
+            "type": ["null", "string"],
+            "doc": "The ID of a specific Jackpot pool"
+        }
+    ]
+}

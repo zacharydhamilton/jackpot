@@ -1,0 +1,18 @@
+{
+    "type": "record",
+    "name": "WagerRequest",
+    "namespace": "com.example.apiserver.objects",
+    "version": "1",
+    "fields": [
+        {
+            "name": "jackpotPoolId",
+            "type": "string",
+            "doc": "The ID of a specific Jackpot pool"
+        },
+        {
+            "name": "wager",
+            "type": "int",
+            "doc": "The wager being placed to the Jackpot pool"
+        }
+    ]
+}

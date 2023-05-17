@@ -1,0 +1,7 @@
+# Terraform
+.terraform*
+terraform.*
+env.sh
+
+aws/.terraform*
+aws/terraform.*

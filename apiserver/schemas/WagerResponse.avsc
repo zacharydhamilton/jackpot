@@ -1,0 +1,28 @@
+{
+    "type": "record",
+    "name": "WagerResponse",
+    "namespace": "com.example.apiserver.objects",
+    "version": "1",
+    "fields": [
+        {
+            "name": "jackpotPoolId",
+            "type": "string",
+            "doc": "The ID of a specific Jackpot pool"
+        },
+        {
+            "name": "wager",
+            "type": "int",
+            "doc": "The wager placed to the Jackpot pool"
+        },
+        {
+            "name": "status",
+            "type": "string",
+            "doc": "The status returned for the request, i.e. success or failure"
+        },
+        {
+            "name": "result",
+            "type": "string",
+            "doc": "The result of placing the wager, i.e. win or lose"
+        }
+    ]
+}

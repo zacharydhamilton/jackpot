@@ -1,0 +1,28 @@
+{
+    "type": "record",
+    "name": "JackpotResponse",
+    "namespace": "com.example.apiserver.objects",
+    "version": "1",
+    "fields": [
+        {
+            "name": "jackpotPoolId",
+            "type": "string",
+            "doc": "The ID of a specific Jackpot pool"
+        },
+        {
+            "name": "region",
+            "type": "string",
+            "doc": "The geographic region of the Jackpot pool"
+        },
+        {
+            "name": "jackpot",
+            "type": "int",
+            "doc": "The current winnable Jackpot"
+        }, 
+        {
+            "name": "status",
+            "type": "string",
+            "doc": "The status of the request for a Jackpot"
+        }
+    ]
+}

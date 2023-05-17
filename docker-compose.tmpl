@@ -1,0 +1,28 @@
+---
+version: '2'
+services:
+    react:
+        image: zachhamilton/rt-jackpot-react
+        hostname: react
+        container_name: react
+        ports: 
+            - 80:80
+    apiserver:
+        image: zachhamilton/rt-jackpot-apiserver
+        hostname: apiserver
+        container_name: apiserver
+        ports:
+            - 8080:8080
+        environment:
+            CONFIG_TYPE: "ENV"
+            BOOTSTRAP_SERVERS: "${bootstrap-servers}"
+            KAFKA_KEY: "${kafka-key}"
+            KAFKA_SECRET: "${kafka-secret}"
+            SCHEMA_REGISTRY_URL: "${schema-registry-url}"
+            SCHEMA_REGISTRY_KEY: "${schema-registry-key}"
+            SCHEMA_REGISTRY_SECRET: "${schema-registry-secret}"
+            KSQL_URL: "${ksql-url}"
+            KSQL_PORT: 443
+            KSQL_KEY: "${ksql-key}"
+            KSQL_SECRET: "${ksql-secret}"    
+      
