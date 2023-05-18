@@ -55,8 +55,8 @@ With the basics set up, you can move on to creating the Connector that will capt
     | **Property**                      | **Value**                                   |
     |-----------------------------------|---------------------------------------------|
     | Kafka Cluster Authentication mode | "Use an existing API key"                   |
-    | Kafka API Key                     | *copy docker-compose file*                  |
-    | Kafka API Secret                  | *copy docker-compose file*                  |
+    | Kafka API Key                     | *copy `docker-env.sh` file*                  |
+    | Kafka API Secret                  | *copy `docker-env.sh` file*                  |
     | Database name                     | jackpot                                     | 
     | Database server name              | jackpot                                     |
     | SSL mode                          | disabled                                    |
