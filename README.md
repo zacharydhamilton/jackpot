@@ -72,7 +72,7 @@ With the basics set up, you can move on to creating the Connector that will capt
 
 ## Ksql
 
-With the connector set up, you can move on to create the Ksql queries to process data. 
+With the connector set up, you can move on to create the Ksql queries to process data. When running the following queries, make sure to use `auto.offset.reset = earliest`. 
 > **Note**: *If the instance of Ksql created by Terraform is not available yet, wait.*
 
 1. Create the first stream in Ksql. This stream will be for the wagers placed by the players.
