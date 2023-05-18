@@ -55,8 +55,8 @@ With the basics set up, you can move on to creating the Connector that will capt
     | **Property**                      | **Value**                                   |
     |-----------------------------------|---------------------------------------------|
     | Kafka Cluster Authentication mode | "Use an existing API key"                   |
-    | Kafka API Key                     | *copy from `docker-env.sh` file*                  |
-    | Kafka API Secret                  | *copy from `docker-env.sh` file*                  |
+    | Kafka API Key                     | *copy from `docker-env.sh` file*            |
+    | Kafka API Secret                  | *copy from `docker-env.sh` file*            |
     | Database name                     | jackpot                                     | 
     | Database server name              | jackpot                                     |
     | SSL mode                          | disabled                                    |
@@ -143,7 +143,7 @@ With the connector set up, you can move on to create the Ksql queries to process
 
 With everything else set up, the meat and potatoes of the architecture can be set up. Terraform should have created a `docker-env.sh` file with you secrets.
 
-1. Make sure you're in the back directory of the repo, then source the secrets file `docker-env.sh` so that the following docker commands will have the secrets' values.
+1. Make sure you're in the back base directory of the repo, then source the secrets file `docker-env.sh` so that the following docker commands will have the secrets' values.
     ```bash
     source docker-env.sh
     ```
