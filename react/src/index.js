@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { StompSessionProvider } from 'react-stomp-hooks';
 
-const wsSourceUrl = `http://localhost:8080/handler`;
+const wsSourceUrl = `${window._env_.APISERVER}/handler`;
 
 ReactDOM.render(
   <React.StrictMode>

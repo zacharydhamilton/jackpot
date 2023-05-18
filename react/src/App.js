@@ -8,7 +8,7 @@ import Feed from './components/Feed';
 import { SpinnerContext } from './components/SpinnerContext';
 
 export default function App() {
-    const emojis = ['🍭','❌','⛄️','🦄','🍌','💩','👻','😻','💵','🤡','🦖','🍎','😂','🖕'];
+    const emojis = ['🍭','❌','⛄️','🦄','🍌','💩','👻','😻','💵','🤡','🦖','🍎','😂','🎃'];
     const [spinnerOne, setSpinnerOne] = useState(['🍭']);
     const [spinnerTwo, setSpinnerTwo] = useState(['🍭']);
     const [spinnerThree, setSpinnerThree] = useState(['🍭']);
@@ -28,7 +28,7 @@ export default function App() {
     const stompClient = useStompClient();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/jackpots", { "Content-Type": "application/json" })
+        axios.get(`${window._env_.APISERVER}/api/jackpots`, { "Content-Type": "application/json" })
             .then((res) => {
                 let arr = [];
                 res.data.map((jackpot) => arr.push(JSON.parse(jackpot)));
@@ -117,7 +117,6 @@ export default function App() {
                         <TextField id="Jackpot" label="Jackpot" placeholder="Please select a jackpot" select required value={jackpot} onChange={handleJackpotChange} sx={{ width: "18ch" }}>
                             {
                                 jackpotPools.map((pool) => (
-                                    // <MenuItem key={pool.jackpotPoolId} value={pool.jackpotPoolId}>{pool.jackpotPoolId.toUpperCase()}</MenuItem>
                                     <MenuItem key={pool.jackpotPoolId} value={pool.jackpotPoolId} sx={{ display: "grid", gridTemplateRows: "100%", gridTemplateColumns: "75% 25%"}}>
                                         <Typography align="left" component="span" sx={{ marginRight: "15px" }}>{pool.jackpotPoolId.toUpperCase()}</Typography>
                                         <Typography align="right" component="span">{pool.region}</Typography>

@@ -19,7 +19,7 @@
 
 1. Once you have your Cloud API Key & Secret, copy them into an "environment" file. Something like `env.sh`. You can use the following command in order to create this file (replacing the placeholder with your values).
     ```bash
-    echo "export CONFLUENT_CLOUD_API_KEY="<cloud-key>"\nexport CONFLUENT_CLOUD_API_SECRET="<cloud-secret>" > env.sh
+    echo "export CONFLUENT_CLOUD_API_KEY="<cloud-key>"\nexport CONFLUENT_CLOUD_API_SECRET="<cloud-secret>"" > env.sh
     ```
 
 1. Once you have your handy `env.sh` file, you should source it to export the values to the console. This will allow Terraform to access them.
@@ -113,7 +113,7 @@ With the connector set up, you can move on to create the Ksql queries to process
     EMIT CHANGES;
     ```
 
-1. Finally, join the stream of wagers with the materialized master data in order to keep an enriched and stateful representation of the various wager pools.
+1. Next, join the stream of wagers with the materialized master data in order to keep an enriched and stateful representation of the various wager pools.
     ```sql
     CREATE TABLE jackpots WITH (
             KAFKA_TOPIC='jackpots',
@@ -129,11 +129,26 @@ With the connector set up, you can move on to create the Ksql queries to process
     EMIT CHANGES;
     ```
 
+1. Finally, insert some zero's into the stream of wagers to "initialize" the wagering pools. 
+    ```sql 
+    INSERT INTO wagers (jackpotPoolId, wager) VALUES ('4a41a567', 0);
+    INSERT INTO wagers (jackpotPoolId, wager) VALUES ('26531c2c', 0);
+    INSERT INTO wagers (jackpotPoolId, wager) VALUES ('9876a556', 0);
+    INSERT INTO wagers (jackpotPoolId, wager) VALUES ('8d4c0a19', 0);
+    INSERT INTO wagers (jackpotPoolId, wager) VALUES ('fd5c17a6', 0);
+    INSERT INTO wagers (jackpotPoolId, wager) VALUES ('5b535f6c', 0);
+    ```
+
 ## API Server and React app
 
-With everything else set up, the meat and potatoes of the architecture can be set up. Terraform should have created a `docker-compose.yaml` file with you secrets.
+With everything else set up, the meat and potatoes of the architecture can be set up. Terraform should have created a `docker-env.sh` file with you secrets.
 
-1. Make sure you're in the back directory of the repo, then run the following command to start the API server.
+1. Make sure you're in the back directory of the repo, then source the secrets file `docker-env.sh` so that the following docker commands will have the secrets' values.
+    ```bash
+    source docker-env.sh
+    ```
+
+1. Run the following command to start the API server.
     ```bash
     docker compose up apiserver -d
     ```

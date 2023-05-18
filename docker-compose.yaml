@@ -17,14 +17,14 @@ services:
             - 8080:8080
         environment:
             CONFIG_TYPE: "ENV"
-            BOOTSTRAP_SERVERS: "${bootstrap-servers}"
-            KAFKA_KEY: "${kafka-key}"
-            KAFKA_SECRET: "${kafka-secret}"
-            SCHEMA_REGISTRY_URL: "${schema-registry-url}"
-            SCHEMA_REGISTRY_KEY: "${schema-registry-key}"
-            SCHEMA_REGISTRY_SECRET: "${schema-registry-secret}"
-            KSQL_URL: "${ksql-url}"
+            BOOTSTRAP_SERVERS: $BOOTSTRAP_SERVERS
+            KAFKA_KEY: $KAFKA_KEY
+            KAFKA_SECRET: $KAFKA_SECRET
+            SCHEMA_REGISTRY_URL: $SCHEMA_REGISTRY_URL
+            SCHEMA_REGISTRY_KEY: $SCHEMA_REGISTRY_KEY
+            SCHEMA_REGISTRY_SECRET: $SCHEMA_REGISTRY_SECRET
+            KSQL_URL: $KSQL_URL
             KSQL_PORT: 443
-            KSQL_KEY: "${ksql-key}"
-            KSQL_SECRET: "${ksql-secret}"    
+            KSQL_KEY: $KSQL_KEY
+            KSQL_SECRET: $KSQL_SECRET
       

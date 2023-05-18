@@ -48,9 +48,8 @@ resource "local_file" "jackpot_server_properties" {
     session.timeout.ms=45000
     EOF
 }
-resource "local_file" "jackpot_docker_compose_yaml" {
-    filename = "../docker-compose.yaml"
-    content = templatefile("../docker-compose.tmpl", {
+locals {
+    docker_compose_template = templatefile("../docker-compose.tmpl", {
         "bootstrap-servers" = substr(confluent_kafka_cluster.main.bootstrap_endpoint,11,-1)
         "kafka-key" = confluent_api_key.jackpot_server_kafka.id
         "kafka-secret" = confluent_api_key.jackpot_server_kafka.secret
@@ -61,4 +60,20 @@ resource "local_file" "jackpot_docker_compose_yaml" {
         "ksql-key" = confluent_api_key.jackpot_server_ksql.id
         "ksql-secret" = confluent_api_key.jackpot_server_ksql.secret
     })
+}
+resource "local_file" "docker_env_sh" {
+    filename = "../docker-env.sh"
+    content = <<-EOF
+        #!/bin/sh
+        export BOOTSTRAP_SERVERS="${substr(confluent_kafka_cluster.main.bootstrap_endpoint,11,-1)}"
+        export KAFKA_KEY="${confluent_api_key.jackpot_server_kafka.id}"
+        export KAFKA_SECRET="${confluent_api_key.jackpot_server_kafka.secret}"
+        export SCHEMA_REGISTRY_URL="${confluent_schema_registry_cluster.main.rest_endpoint}"
+        export SCHEMA_REGISTRY_KEY="${confluent_api_key.jackpot_server_sr.id}"
+        export SCHEMA_REGISTRY_SECRET="${confluent_api_key.jackpot_server_sr.secret}"
+        export KSQL_URL="${substr(confluent_ksql_cluster.main.rest_endpoint, 8, length(confluent_ksql_cluster.main.rest_endpoint)-8-4)}"
+        export KSQL_PORT=443
+        export KSQL_KEY="${confluent_api_key.jackpot_server_ksql.id}"
+        export KSQL_SECRET="${confluent_api_key.jackpot_server_ksql.secret}" 
+    EOF
 }

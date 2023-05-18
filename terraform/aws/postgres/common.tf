@@ -18,7 +18,7 @@ provider "aws" {
 locals {
     name_prefix = "rt-jackpot-"
     aws_region = "us-east-2"
-    databases = 1
+    databases = 5
 }
 # Gather all the service ips from aws
 data "http" "ec2_instance_connect" {

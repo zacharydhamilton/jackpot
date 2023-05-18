@@ -19,6 +19,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "dev": "chmod +x ./build-env.sh && ./build-env.sh && cp env-config.js ./public/ && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
